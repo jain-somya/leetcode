@@ -19,6 +19,8 @@
  */
 var mergeTwoLists = function(list1, list2) {
     // compare head, 
+    let newArray=[]
+    list1.next()
     
     
 };

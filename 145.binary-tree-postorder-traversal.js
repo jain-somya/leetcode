@@ -28,6 +28,12 @@ var postorderTraversal = function(root) {
     }
     foo(root)
     return arr
+
+
 };
 // @lc code=end
 
+
+// @after-stub-for-debug-begin
+module.exports = postorderTraversal;
+// @after-stub-for-debug-end

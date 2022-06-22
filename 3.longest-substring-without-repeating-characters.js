@@ -11,26 +11,24 @@
  */
 var lengthOfLongestSubstring = function (s) {
  let obj ={}
- let len = 0
- let start = 0
  let maxLen=0
- for(let i=0 ;i<s.length; i++){
-     if(s[i] in obj){
-         start = obj[s[i]] +1
-         if(i==obj[s[i]]+1){
-            obj={}
-         }
-     }
-     obj[s[i]]= i
-     len = i-start +1
-     console.log('i',i)
-
-     console.log('start',start)
-     console.log('len', len)
-     console.log(obj)
-     maxLen = maxLen >len ? maxLen : len
+ let currStart =0
+ let pos = 0
+ while(pos<s.length){
+    if(s[pos] in obj){
+        currStart = obj[s[pos]] +1
+        obj = {}   // new obj if element found, start again from that pos
+        obj[s[currStart]] = currStart
+        pos =  currStart+1
+    }
+    else{
+        obj[s[pos]] = pos
+        pos +=1
+    }
+   maxLen = maxLen > pos-currStart ? maxLen : pos-currStart
+ 
  }
  return maxLen
 };
-lengthOfLongestSubstring("wobgrovw")
+ // lengthOfLongestSubstring("dvdf")
 // @lc code=end

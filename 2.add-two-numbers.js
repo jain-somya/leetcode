@@ -5,40 +5,47 @@
  */
 
 // @lc code=start
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}-
- */
+
+
+// /**
+//  * @param {ListNode} l1
+//  * @param {ListNode} l2
+//  * @return {ListNode}-
+//  */
 var addTwoNumbers = function(l1, l2) {
-    let head =l1
-    let cary=0
-
-    while (l1.next!==null || l2.next!==null ){
-        if(l1.val+ l2.val+cary >9){
-            l1.val =(l1.val+ l2.val+cary) %10
-            cary=1
-        }else{
-            l1.val = l1.val+ l2.val +cary
-            cary=0
+    let carry =0
+    let h = new ListNode(0)  //  make a new node
+    let head = h              // store head to return later
+    let val = 0               // store sum
+    if(!l1){
+        return l2
+    }
+    if(!l2){
+        return l1
+    }
+    while(l1 || l2 || carry ){
+        if(l1){
+            val += l1.val
+            l1 = l1.next
         }
-        l1= l1.next
-        l2=l2.next
+        if(l2){
+            val += l2.val
+            l2 = l2.next
+        }
+        if( val +carry >=10){
+            val = val+ carry - 10
+            carry = 1
+        }
+        else {
+            val = val+ carry
+            carry = 0
+        }
+        h.next = new ListNode(val)  // create new node with sum
+        h= h.next     // point to next node
+        val = 0  
     }
-    
-    if(l1.next==null && l2.next!==null ){
-        l1.next = l2.next
-    }
-    
-
-    return head
+return head.next
 };
+
 // @lc code=end
 

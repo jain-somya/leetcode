@@ -13,10 +13,13 @@ var longestPalindrome = function(s) {
     let longest = 0
     let i=0
     let j=s.length
-    while(i!=j){
-        if(s[i]==s[j]){
-            
+    while(i< s.length && s.length-i >longest){
+        while(j>i){
+
         }
+        if()
+        i+=1
+        j=s.length
     }
     
 };

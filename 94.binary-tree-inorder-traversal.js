@@ -18,21 +18,24 @@
  * @return {number[]}
  */
 var inorderTraversal = function(root) {
-    let stack = []
-    let arr=[ ]
-    if(!root)return arr
-    stack.push(root)
-    stack.push(root.left)
-    while (stack.length){
-        if(root.left){
-            stack.push(root)
-            root=root.left
-        }
-        else{
-            arr.push
-        }
+    let stack = [];
+    let arr = [];
+    if (!root) return arr;
+    while (root || stack.length) {
+      while(root!=null){
+          stack.push(root);
+          root = root.left;
+      }
+      root = stack.pop()
+      arr.push(root.val)
+      root= root.right
     }
+    return arr;
     
 };
+
+// push all left nodes
+
+// pop node, push right node
 // @lc code=end
 
